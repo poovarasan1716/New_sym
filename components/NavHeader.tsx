@@ -1,0 +1,108 @@
+"use client";
+
+import React from 'react';
+import { useTheme } from '@/contexts/ThemeContext';
+import { useAuth } from '@/contexts/AuthContext';
+import ThemeToggle from './ThemeToggle';
+import { LogOut, Terminal, Cpu, Power, LogIn, Scan, Wifi, HardDrive, Globe, Sword, Bomb, Target } from 'lucide-react';
+import Link from 'next/link';
+
+interface NavHeaderProps {
+  showAuthButtons?: boolean;
+}
+
+export default function NavHeader({
+  showAuthButtons = true,
+}: NavHeaderProps) {
+  const { theme, themeName } = useTheme();
+  const { isAuthenticated, logout } = useAuth();
+
+  // Handlers for Login/Signup are not passed anymore because we used Link in Next.js
+  // or checking pathname, but keeping it simple with Links.
+
+  return (
+    <div
+      className="sticky top-0 z-50 flex flex-row justify-between items-center px-4 md:px-12 py-3 md:py-4 border-b backdrop-blur-xl"
+      style={{
+        borderBottomColor: `${theme.primary}20`,
+        backgroundColor: `${theme.background}90`
+      }}
+    >
+      {/* Start: Logo & Brand */}
+      <div className="flex-shrink-0 flex justify-start min-w-[100px] md:flex-1">
+        <div className="flex flex-row items-center gap-2 md:gap-5">
+          <div
+            className="w-10 h-10 md:w-12 md:h-12 rounded-xl border flex justify-center items-center"
+            style={{ backgroundColor: theme.surface, borderColor: `${theme.primary}40` }}
+          >
+            {themeName === 'deadpool' ? (
+              <Cpu color={theme.primary} size={22} />
+            ) : (
+              <Terminal color={theme.primary} size={22} />
+            )}
+          </div>
+          <div className="flex flex-col">
+            <h1 className="text-xs md:text-xl font-black tracking-[0.15em] whitespace-nowrap" style={{ color: theme.text }}>
+              {themeName === 'deadpool' ? 'DEADPOOL' : 'HACKER'}
+            </h1>
+            <span className="text-[10px] md:text-[11px] font-bold tracking-[0.1em] flex items-center gap-2 -mt-1 opacity-60" style={{ color: theme.primary }}>
+              {themeName === 'deadpool' ? 'CHAT' : 'TERMINAL'}
+              <div className="flex items-center gap-2 ml-2 border-l pl-2" style={{ borderColor: `${theme.primary}40` }}>
+                {themeName === 'hacker' ? (
+                  <>
+                    <Scan size={10} className="animate-pulse" />
+                    <Wifi size={10} />
+                    <HardDrive size={10} />
+                    <Globe size={10} />
+                  </>
+                ) : (
+                  <div className="flex items-center gap-5 ml-2 border-l pl-2" style={{ borderColor: `${theme.primary}40` }}>
+                    <Sword size={10} />
+                    <Bomb size={10} />
+                    <Target size={10} />
+                  </div>
+                )}
+              </div>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Mid: Primary Actions (Login & Sign Up) */}
+      <div className="flex-1 flex justify-center px-2 gap-2 md:gap-4">
+        {showAuthButtons && !isAuthenticated && (
+          <>
+            <Link
+              href="/login"
+              className="px-6 py-2.5 rounded-xl font-bold text-[11px] md:text-[13px] uppercase tracking-widest transition-all shadow-lg flex items-center gap-2"
+              style={{ backgroundColor: theme.primary, color: '#fff' }}
+            >
+              <LogIn size={16} />
+              Login
+            </Link>
+          </>
+        )}
+
+        {isAuthenticated && (
+          <button
+            onClick={logout}
+            className="flex flex-row items-center gap-1.5 px-3 py-2 md:px-4 md:py-3 rounded-lg border hover:bg-opacity-80 transition-all text-[11px] md:text-[13px] font-semibold"
+            style={{
+              backgroundColor: theme.surface,
+              borderColor: theme.surfaceLight,
+              color: theme.textSecondary
+            }}
+          >
+            <Power color={theme.primary} size={18} />
+            <span className="hidden md:inline">Logout</span>
+          </button>
+        )}
+      </div>
+
+      {/* End: Theme Toggle */}
+      <div className="flex-shrink-0 flex justify-end min-w-[40px] md:flex-1">
+        <ThemeToggle />
+      </div>
+    </div>
+  );
+}

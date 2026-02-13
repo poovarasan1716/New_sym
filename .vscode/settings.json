@@ -1,0 +1,6 @@
+{
+  "json.validate.enable": true,
+  "files.associations": {
+    "bun.lock": "plaintext"
+  }
+}
