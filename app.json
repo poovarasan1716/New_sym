@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Deadpool Hacker Theme Web",
-    "slug": "deadpool-hacker-theme-web",
+    "name": "Symposium Hacker Theme Web",
+    "slug": "symposium-hacker-theme-web",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -15,14 +15,14 @@
     },
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "app.rork.deadpool-hacker-theme-web"
+      "bundleIdentifier": "app.rork.symposium-hacker-theme-web"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "app.rork.deadpool_hacker_theme_web"
+      "package": "app.rork.symposium_hacker_theme_web"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"

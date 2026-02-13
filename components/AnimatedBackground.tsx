@@ -13,8 +13,8 @@ export default function AnimatedBackground({ children }: { children: React.React
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: `radial-gradient(circle at 50% 50%, ${theme.name === 'deadpool' ? 'rgba(230, 36, 41, 0.08)' : 'rgba(0, 255, 65, 0.05)'} 0%, transparent 70%), 
-                     linear-gradient(to bottom right, ${theme.background}, ${theme.name === 'deadpool' ? 'rgba(139, 0, 0, 0.1)' : 'rgba(0, 20, 10, 0.1)'}, ${theme.background})`
+          background: `radial-gradient(circle at 50% 50%, ${themeName === 'hacker' ? 'rgba(230, 36, 41, 0.08)' : 'rgba(0, 255, 65, 0.05)'} 0%, transparent 70%), 
+                     linear-gradient(to bottom right, ${theme.background}, ${themeName === 'hacker' ? 'rgba(139, 0, 0, 0.1)' : 'rgba(0, 20, 10, 0.1)'}, ${theme.background})`
         }}
       />
 
@@ -36,7 +36,7 @@ export default function AnimatedBackground({ children }: { children: React.React
       {/* Additional subtle noise/texture could go here */}
 
       {/* Hacker Scan Line - Vertical scanning effect */}
-      {themeName === 'hacker' && (
+      {themeName === 'terminal' && (
         <motion.div
           className="absolute left-0 right-0 h-[3px] opacity-30 pointer-events-none z-20"
           style={{
@@ -60,9 +60,7 @@ export default function AnimatedBackground({ children }: { children: React.React
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="w-full flex-1 flex flex-col items-center">
-          {children}
-        </div>
+        {children}
       </motion.div>
     </div>
   );

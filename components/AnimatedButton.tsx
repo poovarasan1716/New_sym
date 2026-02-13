@@ -29,7 +29,7 @@ export default function AnimatedButton({
         return {
           backgroundColor: theme.buttonBg,
           color: theme.buttonText,
-          border: 'none',
+          border: `1px solid ${theme.buttonBorder}`,
           boxShadow: `0 0 15px ${theme.primary}40`,
         };
       case 'secondary':

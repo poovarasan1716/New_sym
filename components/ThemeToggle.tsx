@@ -30,7 +30,7 @@ export default function ThemeToggle() {
         animate={{ opacity: isTransitioning ? 0 : 1 }}
         transition={{ duration: 0.15 }}
       >
-        {themeName === 'deadpool' ? (
+        {themeName === 'hacker' ? (
           <Ghost color={theme.primary} size={22} />
         ) : (
           <Command color={theme.primary} size={22} />

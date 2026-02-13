@@ -36,34 +36,24 @@ export default function LandingPage() {
         <AnimatedBackground>
             <NavHeader showAuthButtons={true} />
 
-            <main className="flex-1 flex flex-col items-center justify-start md:justify-center w-full px-6 pt-4 pb-10 md:py-6">
+            <main className="flex-1 flex flex-col items-center justify-center w-full px-6 py-12">
                 {/* Main Content Animation (Fade-in & Slide-up on mount) */}
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="flex flex-col items-center w-full max-w-4xl"
+                    className="flex flex-col items-center justify-center w-full max-w-4xl"
                 >
                     <HeroSection />
 
                     {/* CTA Section */}
-                    <div className="flex flex-col items-center justify-center gap-4 w-full max-w-sm mt-6">
+                    <div className="flex flex-col items-center justify-center gap-4 w-full max-w-sm mt-8">
                         <AnimatedButton
                             title="ENTER NODE"
                             variant="primary"
                             className="w-full py-4 text-base font-black tracking-widest"
                             onClick={() => router.push('/login')}
                         />
-                        {/* <button
-                            onClick={() => router.push('/login')}
-                            className="w-full py-4 rounded-xl border-2 font-black text-sm uppercase tracking-[0.2em] transition-all hover:bg-white/5 active:scale-95"
-                            style={{
-                                borderColor: theme.primary,
-                                color: theme.primary
-                            }}
-                        >
-                            I HAVE AN ACCOUNT
-                        </button> */}
                     </div>
 
                     {/* Footer Branding */}
@@ -71,7 +61,7 @@ export default function LandingPage() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 0.2 }}
                         transition={{ delay: 1.2, duration: 1 }}
-                        className="mt-10 font-mono text-[10px] uppercase tracking-[0.5em] text-white text-center"
+                        className="mt-12 font-mono text-[10px] uppercase tracking-[0.5em] text-white text-center"
                     >
                         SYMPOSIUM :: CHENNAI_NODE
                     </motion.p>

@@ -15,27 +15,30 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [themeName, setThemeName] = useState<ThemeName>('deadpool');
+  const [themeName, setThemeName] = useState<ThemeName>('hacker');
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    const saved = localStorage.getItem(THEME_STORAGE_KEY) as ThemeName;
-    if (saved === 'hacker' || saved === 'deadpool') {
-      setThemeName(saved);
+    const saved = localStorage.getItem(THEME_STORAGE_KEY) as string;
+    if (saved === 'terminal' || saved === 'hacker') {
+      setThemeName(saved as ThemeName);
+    } else if (saved === 'red-hacker' || saved === 'deadpool') {
+      setThemeName('hacker');
+    } else if (saved === 'green-hacker' || saved === 'hacker') {
+      setThemeName('terminal');
     }
   }, []);
 
   const toggleTheme = useCallback(() => {
     setIsTransitioning(true);
-    // Simple timeout to simulate transition if needed, or just switch
     setTimeout(() => {
-      const newTheme = themeName === 'deadpool' ? 'hacker' : 'deadpool';
+      const newTheme = themeName === 'hacker' ? 'terminal' : 'hacker';
       setThemeName(newTheme);
       localStorage.setItem(THEME_STORAGE_KEY, newTheme);
       setIsTransitioning(false);
-    }, 300); // 300ms matches existing animation roughly
+    }, 300);
   }, [themeName]);
 
   const theme = THEMES[themeName];

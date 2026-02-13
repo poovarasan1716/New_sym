@@ -93,7 +93,7 @@ export default function HeroSection() {
               ease: "easeInOut"
             }}
           >
-            {themeName === 'deadpool' ? 'DEADPOOL' : 'HACKER'}
+            {themeName === 'hacker' ? 'Hacker' : 'Hacker'}
           </motion.h1>
 
           {/* Subtle Ghost/Reflection Text */}
@@ -101,7 +101,7 @@ export default function HeroSection() {
             className="text-[14vw] sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight leading-none absolute top-1 left-1 opacity-10 select-none z-0"
             style={{ color: theme.primary }}
           >
-            {themeName === 'deadpool' ? 'DEADPOOL' : 'HACKER'}
+            {themeName === 'hacker' ? 'Hacker' : 'Hacker'}
           </h1>
         </div>
 
@@ -117,15 +117,15 @@ export default function HeroSection() {
             textShadow: `0 0 15px ${theme.primary}40`
           }}
         >
-          {themeName === 'deadpool' ? 'MAXIMUM EFFORT' : 'ACCESS GRANTED'}
+          {themeName === 'hacker' ? 'SYSTEM OVERRIDE' : 'ACCESS GRANTED'}
         </p>
 
         <p
           className="text-sm md:text-lg font-bold opacity-80 max-w-[280px] md:max-w-lg mx-auto leading-relaxed"
           style={{ color: theme.textSecondary }}
         >
-          {themeName === 'deadpool'
-            ? 'The merc with a mouth, now in your pocket.'
+          {themeName === 'hacker'
+            ? 'Advanced neural interface for high-stakes operations.'
             : 'Decoding the matrix, one prompt at a time.'}
         </p>
       </motion.div>
